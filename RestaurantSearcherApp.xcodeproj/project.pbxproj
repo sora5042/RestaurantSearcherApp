@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D632580E266774E600592F55 /* RestaurantSercherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantSercherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D632580E266774E600592F55 /* RestaurantSearcherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantSearcherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6325811266774E600592F55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6325813266774E600592F55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D6325815266774E600592F55 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		D6325805266774E600592F55 = {
 			isa = PBXGroup;
 			children = (
-				D6325810266774E600592F55 /* RestaurantSercherApp */,
+				D6325810266774E600592F55 /* RestaurantSearcherApp */,
 				D632580F266774E600592F55 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,12 +58,12 @@
 		D632580F266774E600592F55 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D632580E266774E600592F55 /* RestaurantSercherApp.app */,
+				D632580E266774E600592F55 /* RestaurantSearcherApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D6325810266774E600592F55 /* RestaurantSercherApp */ = {
+		D6325810266774E600592F55 /* RestaurantSearcherApp */ = {
 			isa = PBXGroup;
 			children = (
 				D6325811266774E600592F55 /* AppDelegate.swift */,
@@ -75,7 +75,7 @@
 				D632581C266774E800592F55 /* LaunchScreen.storyboard */,
 				D632581F266774E800592F55 /* Info.plist */,
 			);
-			path = RestaurantSercherApp;
+			path = RestaurantSearcherApp;
 			sourceTree = "<group>";
 		};
 		D697A202266844FE0008CEEA /* Model */ = {
@@ -107,9 +107,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D632580D266774E600592F55 /* RestaurantSercherApp */ = {
+		D632580D266774E600592F55 /* RestaurantSearcherApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6325822266774E800592F55 /* Build configuration list for PBXNativeTarget "RestaurantSercherApp" */;
+			buildConfigurationList = D6325822266774E800592F55 /* Build configuration list for PBXNativeTarget "RestaurantSearcherApp" */;
 			buildPhases = (
 				D632580A266774E600592F55 /* Sources */,
 				D632580B266774E600592F55 /* Frameworks */,
@@ -119,13 +119,13 @@
 			);
 			dependencies = (
 			);
-			name = RestaurantSercherApp;
+			name = RestaurantSearcherApp;
 			packageProductDependencies = (
 				D697A20A26684BE40008CEEA /* Alamofire */,
 				D697A20D26685CF80008CEEA /* SwiftyJSON */,
 			);
 			productName = RestaurantSercherApp;
-			productReference = D632580E266774E600592F55 /* RestaurantSercherApp.app */;
+			productReference = D632580E266774E600592F55 /* RestaurantSearcherApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -142,7 +142,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D6325809266774E600592F55 /* Build configuration list for PBXProject "RestaurantSercherApp" */;
+			buildConfigurationList = D6325809266774E600592F55 /* Build configuration list for PBXProject "RestaurantSearcherApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -159,7 +159,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D632580D266774E600592F55 /* RestaurantSercherApp */,
+				D632580D266774E600592F55 /* RestaurantSearcherApp */,
 			);
 		};
 /* End PBXProject section */
@@ -336,15 +336,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L6Q4H7M3DB;
-				INFOPLIST_FILE = RestaurantSercherApp/Info.plist;
+				INFOPLIST_FILE = RestaurantSearcherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.soraproject.RestaurantSercherApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soraproject.RestaurantSearcherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -355,22 +355,22 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L6Q4H7M3DB;
-				INFOPLIST_FILE = RestaurantSercherApp/Info.plist;
+				INFOPLIST_FILE = RestaurantSearcherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.soraproject.RestaurantSercherApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soraproject.RestaurantSearcherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D6325809266774E600592F55 /* Build configuration list for PBXProject "RestaurantSercherApp" */ = {
+		D6325809266774E600592F55 /* Build configuration list for PBXProject "RestaurantSearcherApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6325820266774E800592F55 /* Debug */,
@@ -379,7 +379,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D6325822266774E800592F55 /* Build configuration list for PBXNativeTarget "RestaurantSercherApp" */ = {
+		D6325822266774E800592F55 /* Build configuration list for PBXNativeTarget "RestaurantSearcherApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6325823266774E800592F55 /* Debug */,
