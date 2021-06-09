@@ -10,33 +10,37 @@ import Alamofire
 
 class API {
     
-    static var shared = API()
+    static let shared = API()
     
     private let baseUrl = "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/"
     
-    func request<T: Decodable>(params: [String: Any], idoValue: String, keidoValue: String, type: T.Type, completion: @escaping (T) -> Void) {
+    func request<T: Decodable>(params: [String: Any], type: T.Type, completion: @escaping (T) -> Void) {
         
         let url = baseUrl + "?"
+        
         var params = params
         params["key"] = "a029724abd77ddd5"
-        params["lat"] = idoValue
-        params["lng"] = keidoValue
-        params["range"] = "3"
+        params["range"] = "5"
         params["format"] = "json"
-        
+    
         let request = AF.request(url, method: .get, parameters: params)
-        
+        print("params: ", params)
         request.responseJSON { (response) in
+            guard let statusCode = response.response?.statusCode else { return }
             
-            do {
-                guard let data = response.data else { return }
-                let decode = JSONDecoder()
-                let value = try decode.decode(T.self, from: data)
-                
-                completion(value)
-                
-            } catch let jsonError {
-                print("jsonError: ", jsonError)
+            if statusCode <= 300 {
+            
+                do {
+                    print("response: ", response)
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    let value = try decoder.decode(T.self, from: data)
+                    
+                    completion(value)
+                    
+                } catch let jsonError {
+                    print("jsonError: ", jsonError)
+                }
             }
         }
     }

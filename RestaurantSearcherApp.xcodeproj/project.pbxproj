@@ -7,30 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D615C7802670F1D8002E8A28 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D615C77F2670F1D8002E8A28 /* ShopDetailViewController.swift */; };
 		D6325812266774E600592F55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6325811266774E600592F55 /* AppDelegate.swift */; };
 		D6325814266774E600592F55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6325813266774E600592F55 /* SceneDelegate.swift */; };
-		D6325816266774E600592F55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6325815266774E600592F55 /* ViewController.swift */; };
+		D6325816266774E600592F55 /* SearchShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6325815266774E600592F55 /* SearchShopViewController.swift */; };
 		D6325819266774E600592F55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6325817266774E600592F55 /* Main.storyboard */; };
 		D632581B266774E800592F55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D632581A266774E800592F55 /* Assets.xcassets */; };
 		D632581E266774E800592F55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D632581C266774E800592F55 /* LaunchScreen.storyboard */; };
 		D697A2042668451D0008CEEA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697A2032668451D0008CEEA /* API.swift */; };
-		D697A208266849DB0008CEEA /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D697A207266849DB0008CEEA /* Detail.storyboard */; };
+		D697A208266849DB0008CEEA /* ShopDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D697A207266849DB0008CEEA /* ShopDetail.storyboard */; };
 		D697A20B26684BE40008CEEA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D697A20A26684BE40008CEEA /* Alamofire */; };
-		D697A20E26685CF80008CEEA /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = D697A20D26685CF80008CEEA /* SwiftyJSON */; };
 		D697A2102668CAFC0008CEEA /* ShopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697A20F2668CAFC0008CEEA /* ShopData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D615C77F2670F1D8002E8A28 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		D632580E266774E600592F55 /* RestaurantSearcherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantSearcherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6325811266774E600592F55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6325813266774E600592F55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D6325815266774E600592F55 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D6325815266774E600592F55 /* SearchShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchShopViewController.swift; sourceTree = "<group>"; };
 		D6325818266774E600592F55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D632581A266774E800592F55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D632581D266774E800592F55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D632581F266774E800592F55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D697A2032668451D0008CEEA /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		D697A207266849DB0008CEEA /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		D697A207266849DB0008CEEA /* ShopDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShopDetail.storyboard; sourceTree = "<group>"; };
 		D697A20F2668CAFC0008CEEA /* ShopData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,7 +40,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D697A20E26685CF80008CEEA /* SwiftyJSON in Frameworks */,
 				D697A20B26684BE40008CEEA /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,7 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				D6325817266774E600592F55 /* Main.storyboard */,
-				D697A207266849DB0008CEEA /* Detail.storyboard */,
+				D697A207266849DB0008CEEA /* ShopDetail.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -99,7 +99,8 @@
 		D697A2062668457D0008CEEA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D6325815266774E600592F55 /* ViewController.swift */,
+				D6325815266774E600592F55 /* SearchShopViewController.swift */,
+				D615C77F2670F1D8002E8A28 /* ShopDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -122,7 +123,6 @@
 			name = RestaurantSearcherApp;
 			packageProductDependencies = (
 				D697A20A26684BE40008CEEA /* Alamofire */,
-				D697A20D26685CF80008CEEA /* SwiftyJSON */,
 			);
 			productName = RestaurantSercherApp;
 			productReference = D632580E266774E600592F55 /* RestaurantSearcherApp.app */;
@@ -153,7 +153,6 @@
 			mainGroup = D6325805266774E600592F55;
 			packageReferences = (
 				D697A20926684BE40008CEEA /* XCRemoteSwiftPackageReference "Alamofire" */,
-				D697A20C26685CF80008CEEA /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = D632580F266774E600592F55 /* Products */;
 			projectDirPath = "";
@@ -172,7 +171,7 @@
 				D632581E266774E800592F55 /* LaunchScreen.storyboard in Resources */,
 				D632581B266774E800592F55 /* Assets.xcassets in Resources */,
 				D6325819266774E600592F55 /* Main.storyboard in Resources */,
-				D697A208266849DB0008CEEA /* Detail.storyboard in Resources */,
+				D697A208266849DB0008CEEA /* ShopDetail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,11 +182,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6325816266774E600592F55 /* ViewController.swift in Sources */,
+				D6325816266774E600592F55 /* SearchShopViewController.swift in Sources */,
 				D6325812266774E600592F55 /* AppDelegate.swift in Sources */,
 				D697A2042668451D0008CEEA /* API.swift in Sources */,
 				D697A2102668CAFC0008CEEA /* ShopData.swift in Sources */,
 				D6325814266774E600592F55 /* SceneDelegate.swift in Sources */,
+				D615C7802670F1D8002E8A28 /* ShopDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,14 +399,6 @@
 				minimumVersion = 5.4.3;
 			};
 		};
-		D697A20C26685CF80008CEEA /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -414,11 +406,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D697A20926684BE40008CEEA /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		D697A20D26685CF80008CEEA /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D697A20C26685CF80008CEEA /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

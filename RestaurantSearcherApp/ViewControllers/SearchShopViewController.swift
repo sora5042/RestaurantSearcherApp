@@ -8,41 +8,79 @@
 import UIKit
 import MapKit
 import Alamofire
-import SwiftyJSON
 
-class ViewController: UIViewController {
+
+class SearchShopViewController: UIViewController {
+    
+    private var shopData = [Shop]()
+    private var shopCount = Int()
+    var idoValue = Double()
+    var keidoValue = Double()
+    private var locManager: CLLocationManager!
+    private var pointAno: MKPointAnnotation = MKPointAnnotation()
     
     @IBOutlet weak var searchWordTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var mkMapView: MKMapView!
-    @IBOutlet var longPressGesRec: UILongPressGestureRecognizer!
-    
-    private var shopData = [Shop]()
-    private var locManager: CLLocationManager!
-    private var routePolyLine: MKPolyline!
-    private var pointAno: MKPointAnnotation = MKPointAnnotation()
-    var idoValue = String()
-    var keidoValue = String()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchShopDataInfo()
         setupMap()
-        
         searchButton.addTarget(self, action: #selector(tappedSearchButton), for: .touchUpInside)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        fetchShopDataInfo()
     }
     
     @objc private func tappedSearchButton() {
         
-        searchWordTextField.resignFirstResponder()
+        let searchText = searchWordTextField.text ?? ""
         
+        fetchSearchShopInfo(searchText: searchText)
+        searchWordTextField.resignFirstResponder()
+    }
+    
+    private func fetchShopDataInfo() {
+        
+        let params = [
+            "lat": "\(idoValue)",
+            "lng": "\(keidoValue)"
+            
+        ] as [String : Any]
+        
+        API.shared.request(params: params, type: ShopData.self) { (shop) in
+            
+            self.shopData = shop.results.shop
+            self.shopCount = shop.results.shop.count
+            print("shopCount: ", self.shopCount)
+            self.addAnnotation()
+        }
+    }
+    
+    private func fetchSearchShopInfo(searchText: String) {
+        
+        let params = [
+            
+            "keyword": searchText,
+            "lat": "\(idoValue)",
+            "lng": "\(keidoValue)"
+            
+        ] as [String : Any]
+        
+        API.shared.request(params: params, type: ShopData.self) { (shop) in
+            
+            self.shopData = shop.results.shop
+            self.shopCount = shop.results.shop.count
+            print("shopCount: ", self.shopCount)
+            self.addAnnotation()
+        }
     }
     
     private func setupMap() {
-        
-        
         
         locManager = CLLocationManager()
         locManager.delegate = self
@@ -90,90 +128,47 @@ class ViewController: UIViewController {
         // デフォルトのコンパスを非表示にする
         mkMapView.showsCompass = false
         
-        // MapViewにピンを立てる
-        mkMapView.addAnnotation(pointAno)
-        mkMapView.removeAnnotation(pointAno)
-        
-        
     }
     
-    @IBAction func mapViewDidLongPress(_ sender: UILongPressGestureRecognizer) {
+    private func addAnnotation() {
         
-        // ロングタップ開始
-        if sender.state == .began {
-            mkMapView.removeAnnotation(pointAno)
+        mkMapView.removeAnnotations(mkMapView.annotations)
+        
+        if shopCount == 0 {
+            return
             
         }
-        // ロングタップ終了（手を離した）
-        else if sender.state == .ended {
-            // タップした位置（CGPoint）を指定してMkMapView上の緯度経度を取得する
-            let tapPoint = sender.location(in: view)
-            let center = mkMapView.convert(tapPoint, toCoordinateFrom: mkMapView)
+        
+        for i in 0...shopCount - 1 {
             
-            let lonStr = center.longitude.description
-            let latStr = center.latitude.description
-            print("lon : " + lonStr)
-            print("lat : " + latStr)
+            print(i)
+            pointAno = MKPointAnnotation()
+            pointAno.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopData[i].lat) , CLLocationDegrees(shopData[i].lng) )
             
-            // 現在位置とタップした位置の距離(m)を算出する
-            let distance = calcDistance(mkMapView.userLocation.coordinate, center)
-            print("distance : " + distance.description)
-            
-            // ピンに設定する文字列を生成する
-            var str:String = Int(distance).description
-            str = str + " m"
-            
-            // yard
-            let yardStr = Int(distance * 1.09361)
-            str = str + " / " + yardStr.description + " yard"
-            
-            if pointAno.title != str {
-                // ピンまでの距離に変化があればtiteを更新する
-                pointAno.title = str
-                mkMapView.addAnnotation(pointAno)
-            }
-            
-            // ロングタップを検出した位置にピンを立てる
-            pointAno.coordinate = center
+            pointAno.title = shopData[i].name
+            pointAno.subtitle = shopData[i].open
             mkMapView.addAnnotation(pointAno)
-        }
-    }
-
-    // 2点間の距離(m)を算出する
-    func calcDistance(_ a: CLLocationCoordinate2D, _ b: CLLocationCoordinate2D) -> CLLocationDistance {
-        // CLLocationオブジェクトを生成
-        let aLoc: CLLocation = CLLocation(latitude: a.latitude, longitude: a.longitude)
-        let bLoc: CLLocation = CLLocation(latitude: b.latitude, longitude: b.longitude)
-        // CLLocationオブジェクトのdistanceで2点間の距離(m)を算出
-        let dist = bLoc.distance(from: aLoc)
-        return dist
-    }
-    
-    private func fetchShopDataInfo() {
-        
-        let params = ["keyword": "餃子の王将"]
-        
-        API.shared.request(params: params, idoValue: idoValue, keidoValue: keidoValue, type: ShopData.self) { (shop) in
             
-            self.shopData = shop.results.shop
         }
-        
     }
 }
 
-extension ViewController: CLLocationManagerDelegate, MKMapViewDelegate {
+extension SearchShopViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:[CLLocation]) {
-        let longitudeString = (locations.last?.coordinate.longitude.description)!
-        let latitudeString = (locations.last?.coordinate.latitude.description)!
+        let longitudeString = (locations.last?.coordinate.longitude)!
+        let latitudeString = (locations.last?.coordinate.latitude)!
         
-        idoValue = latitudeString
-        keidoValue = longitudeString
+        let lngFloor = ceil(longitudeString * 1000)/1000
+        let latFloor = floor(latitudeString * 100)/100
         
-        print("lon : " + longitudeString)
-        print("lat : " + latitudeString)
+        idoValue = latFloor
+        keidoValue = lngFloor
         
-        // 現在位置とタッウプした位置の距離(m)を算出する
+        print("lon : ", keidoValue)
+        print("lat : ", idoValue)
+        
+        // 現在位置とタップした位置の距離(m)を算出する
         let distance = calcDistance(mkMapView.userLocation.coordinate, pointAno.coordinate)
         
         if (0 != distance) {
@@ -185,11 +180,6 @@ extension ViewController: CLLocationManagerDelegate, MKMapViewDelegate {
             let yardString = Int(distance * 1.09361)
             string = string + " / " + yardString.description + " yard"
             
-            if pointAno.title != string {
-                // ピンまでの距離に変化があればtitleを更新する
-                pointAno.title = string
-                mkMapView.addAnnotation(pointAno)
-            }
         }
     }
     
@@ -216,9 +206,13 @@ extension ViewController: CLLocationManagerDelegate, MKMapViewDelegate {
         }
     }
     
-    func updateCurrentPos(_ coordinate:CLLocationCoordinate2D) {
-        var region:MKCoordinateRegion = mkMapView.region
-        region.center = coordinate
-        mkMapView.setRegion(region,animated:true)
+    // 2点間の距離(m)を算出する
+    func calcDistance(_ a: CLLocationCoordinate2D, _ b: CLLocationCoordinate2D) -> CLLocationDistance {
+        // CLLocationオブジェクトを生成
+        let aLoc: CLLocation = CLLocation(latitude: a.latitude, longitude: a.longitude)
+        let bLoc: CLLocation = CLLocation(latitude: b.latitude, longitude: b.longitude)
+        // CLLocationオブジェクトのdistanceで2点間の距離(m)を算出
+        let dist = bLoc.distance(from: aLoc)
+        return dist
     }
 }

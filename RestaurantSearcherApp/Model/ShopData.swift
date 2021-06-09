@@ -21,6 +21,8 @@ class Shop: Decodable {
     
     let access: String
     let address: String
+    let lat: Double
+    let lng: Double
     let name: String
     let open: String
     let parking: String
