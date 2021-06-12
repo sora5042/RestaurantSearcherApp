@@ -21,6 +21,7 @@ class Shop: Decodable {
     
     let access: String
     let address: String
+    let `catch`: String
     let lat: Double
     let lng: Double
     let name: String
@@ -32,9 +33,18 @@ class Shop: Decodable {
 class Photo: Decodable {
     
     let mobile: Mobile
+    let pc: PC
 }
 
 class Mobile: Decodable {
     
     let l: String
+    let s: String
+}
+
+class PC: Decodable {
+    
+    let l: String
+    let s: String
+    
 }

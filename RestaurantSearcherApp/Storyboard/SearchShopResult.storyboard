@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Shop Resulr View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="SearchShopResulrViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="SearchShopResulrViewController" customModule="RestaurantSearcherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDJ-G7-hZ0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6e6-zC-tYY">
+                                        <rect key="frame" x="33" y="55" width="31" height="30"/>
+                                        <state key="normal" title="戻る"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.81120467429999998" blue="0.65364611910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="6e6-zC-tYY" firstAttribute="leading" secondItem="IDJ-G7-hZ0" secondAttribute="leading" constant="33" id="Asj-X5-XGm"/>
+                                    <constraint firstItem="6e6-zC-tYY" firstAttribute="top" secondItem="IDJ-G7-hZ0" secondAttribute="top" constant="55" id="WQx-OV-rrC"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="97O-2y-17M">
+                                <rect key="frame" x="0.0" y="108" width="375" height="704"/>
+                                <color key="backgroundColor" red="1" green="0.90344678960000002" blue="0.80844528240000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellId" rowHeight="200" id="izs-Wt-dUo">
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="izs-Wt-dUo" id="2kP-Oz-tEy">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="検索結果一覧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcU-V3-GAF">
+                                <rect key="frame" x="120" y="55" width="134" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="1" green="0.90344678960000002" blue="0.80844528240000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="IDJ-G7-hZ0" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="0B1-QD-2iq"/>
+                            <constraint firstAttribute="bottom" secondItem="IDJ-G7-hZ0" secondAttribute="bottom" constant="712" id="EFM-ZH-5pO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="UcU-V3-GAF" secondAttribute="trailing" constant="121" id="Hhy-4V-vlH"/>
+                            <constraint firstItem="UcU-V3-GAF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="120" id="I1x-G5-gS3"/>
+                            <constraint firstAttribute="bottom" secondItem="97O-2y-17M" secondAttribute="bottom" id="NAk-cS-Nr7"/>
+                            <constraint firstItem="97O-2y-17M" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="S7Y-6i-T2s"/>
+                            <constraint firstItem="UcU-V3-GAF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="11" id="WdJ-RW-6OY"/>
+                            <constraint firstItem="97O-2y-17M" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YrH-6X-tOP"/>
+                            <constraint firstItem="IDJ-G7-hZ0" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="c4d-Q3-xVh"/>
+                            <constraint firstItem="IDJ-G7-hZ0" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="hA3-ij-BRc"/>
+                            <constraint firstItem="IDJ-G7-hZ0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="m2G-Ve-Llu"/>
+                            <constraint firstItem="97O-2y-17M" firstAttribute="top" secondItem="IDJ-G7-hZ0" secondAttribute="bottom" constant="8" symbolic="YES" id="xhH-Fx-e8L"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="6e6-zC-tYY" id="xhS-bR-576"/>
+                        <outlet property="searchShopResultTableView" destination="97O-2y-17M" id="Ffs-68-qqL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="58.374384236453203"/>
+        </scene>
+    </scenes>
+</document>

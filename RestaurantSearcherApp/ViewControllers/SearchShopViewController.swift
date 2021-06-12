@@ -8,32 +8,58 @@
 import UIKit
 import MapKit
 import Alamofire
-
+import Nuke
 
 class SearchShopViewController: UIViewController {
     
+    private var shopDetail: Shop?
     private var shopData = [Shop]()
     private var shopCount = Int()
-    var idoValue = Double()
-    var keidoValue = Double()
+    
+    private var nameStringArray = [String]()
+    private var shopImageStringArray = [String]()
+    private var addressStringArray = [String]()
+    private var accessStringArray = [String]()
+    private var openStringArray = [String]()
+    private var parkingStringArray = [String]()
+    private var catchStringArray = [String]()
+    private var indexNumber = Int()
+    
+    private var idoValue = Double()
+    private var keidoValue = Double()
+    
     private var locManager: CLLocationManager!
     private var pointAno: MKPointAnnotation = MKPointAnnotation()
     
     @IBOutlet weak var searchWordTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var mkMapView: MKMapView!
+    @IBOutlet weak var searchResultButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupMap()
         searchButton.addTarget(self, action: #selector(tappedSearchButton), for: .touchUpInside)
+        searchResultButton.addTarget(self, action: #selector(tappedSearchResultButton), for: .touchUpInside)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         fetchShopDataInfo()
+    }
+    
+    @objc private func tappedSearchResultButton() {
+        
+        let shopSearchResultViewController = UIStoryboard(name: "SearchShopResult", bundle: nil).instantiateViewController(withIdentifier: "SearchShopResulrViewController") as! SearchShopResulrViewController
+        
+        shopSearchResultViewController.modalPresentationStyle = .fullScreen
+        shopSearchResultViewController.shopData = shopData
+        
+        
+        self.present(shopSearchResultViewController, animated: true, completion: nil)
+        
     }
     
     @objc private func tappedSearchButton() {
@@ -132,7 +158,7 @@ class SearchShopViewController: UIViewController {
     
     private func addAnnotation() {
         
-        mkMapView.removeAnnotations(mkMapView.annotations)
+        removeArray()
         
         if shopCount == 0 {
             return
@@ -141,46 +167,86 @@ class SearchShopViewController: UIViewController {
         
         for i in 0...shopCount - 1 {
             
-            print(i)
+            print("i: ", i)
             pointAno = MKPointAnnotation()
             pointAno.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopData[i].lat) , CLLocationDegrees(shopData[i].lng) )
             
             pointAno.title = shopData[i].name
             pointAno.subtitle = shopData[i].open
+            nameStringArray.append(shopData[i].name)
+            addressStringArray.append(shopData[i].address)
+            shopImageStringArray.append(shopData[i].photo.pc.l)
+            accessStringArray.append(shopData[i].access)
+            parkingStringArray.append(shopData[i].parking)
+            openStringArray.append(shopData[i].open)
+            catchStringArray.append(shopData[i].catch)
+            
             mkMapView.addAnnotation(pointAno)
             
         }
+    }
+    
+    private func removeArray() {
+        
+        mkMapView.removeAnnotations(mkMapView.annotations)
+        
+        nameStringArray = []
+        addressStringArray = []
+        shopImageStringArray = []
+        accessStringArray = []
+        parkingStringArray = []
+        openStringArray = []
+        catchStringArray = []
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        self.view.endEditing(true)
     }
 }
 
 extension SearchShopViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:[CLLocation]) {
-        let longitudeString = (locations.last?.coordinate.longitude)!
-        let latitudeString = (locations.last?.coordinate.latitude)!
+        let longitude = (locations.last?.coordinate.longitude)!
+        let latitude = (locations.last?.coordinate.latitude)!
         
-        let lngFloor = ceil(longitudeString * 1000)/1000
-        let latFloor = floor(latitudeString * 100)/100
+        let lngFloor = ceil(longitude * 1000)/1000
+        let latFloor = floor(latitude * 100)/100
         
         idoValue = latFloor
         keidoValue = lngFloor
         
         print("lon : ", keidoValue)
         print("lat : ", idoValue)
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        // 現在位置とタップした位置の距離(m)を算出する
-        let distance = calcDistance(mkMapView.userLocation.coordinate, pointAno.coordinate)
+        indexNumber = Int()
         
-        if (0 != distance) {
-            // ピンに設定する文字列を生成する
-            var string:String = Int(distance).description
-            string = string + " m"
+        if nameStringArray.firstIndex(of: (view.annotation?.title)!!) != nil {
             
-            // yard
-            let yardString = Int(distance * 1.09361)
-            string = string + " / " + yardString.description + " yard"
+            indexNumber = nameStringArray.firstIndex(of: (view.annotation?.title)!!)!
+            print("indexNumber: ", indexNumber)
             
         }
+        
+        let shopDetailViewController = UIStoryboard(name: "ShopDetail", bundle: nil).instantiateViewController(withIdentifier: "ShopDetailViewController") as! ShopDetailViewController
+        
+        shopDetailViewController.modalPresentationStyle = .fullScreen
+        shopDetailViewController.shopDetail = self.shopData[indexNumber]
+        self.present(shopDetailViewController, animated: true, completion: nil)
+        
+        
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -205,7 +271,6 @@ extension SearchShopViewController: CLLocationManagerDelegate, MKMapViewDelegate
             print("This should not happen")
         }
     }
-    
     // 2点間の距離(m)を算出する
     func calcDistance(_ a: CLLocationCoordinate2D, _ b: CLLocationCoordinate2D) -> CLLocationDistance {
         // CLLocationオブジェクトを生成

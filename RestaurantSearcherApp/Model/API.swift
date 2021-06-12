@@ -21,17 +21,18 @@ class API {
         var params = params
         params["key"] = "a029724abd77ddd5"
         params["range"] = "5"
+        params["count"] = "20"
         params["format"] = "json"
     
         let request = AF.request(url, method: .get, parameters: params)
-        print("params: ", params)
+        
         request.responseJSON { (response) in
             guard let statusCode = response.response?.statusCode else { return }
             
             if statusCode <= 300 {
             
                 do {
-                    print("response: ", response)
+                   
                     guard let data = response.data else { return }
                     let decoder = JSONDecoder()
                     let value = try decoder.decode(T.self, from: data)
