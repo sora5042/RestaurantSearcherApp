@@ -15,7 +15,7 @@
 		D615C78C26746A1B002E8A28 /* SearchShopResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D615C78A26746A1B002E8A28 /* SearchShopResultTableViewCell.xib */; };
 		D615C78F267484E5002E8A28 /* ShopDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D615C78D267484E5002E8A28 /* ShopDetailTableViewCell.swift */; };
 		D615C790267484E5002E8A28 /* ShopDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D615C78E267484E5002E8A28 /* ShopDetailTableViewCell.xib */; };
-		D615C7952678EA41002E8A28 /* 簡易仕様書.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D615C7942678EA40002E8A28 /* 簡易仕様書.pdf */; };
+		D615C7992678EFD2002E8A28 /* 簡易仕様書.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D615C7982678EFD2002E8A28 /* 簡易仕様書.pdf */; };
 		D6325812266774E600592F55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6325811266774E600592F55 /* AppDelegate.swift */; };
 		D6325814266774E600592F55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6325813266774E600592F55 /* SceneDelegate.swift */; };
 		D6325816266774E600592F55 /* SearchShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6325815266774E600592F55 /* SearchShopViewController.swift */; };
@@ -36,7 +36,7 @@
 		D615C78A26746A1B002E8A28 /* SearchShopResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchShopResultTableViewCell.xib; sourceTree = "<group>"; };
 		D615C78D267484E5002E8A28 /* ShopDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailTableViewCell.swift; sourceTree = "<group>"; };
 		D615C78E267484E5002E8A28 /* ShopDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopDetailTableViewCell.xib; sourceTree = "<group>"; };
-		D615C7942678EA40002E8A28 /* 簡易仕様書.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "簡易仕様書.pdf"; sourceTree = "<group>"; };
+		D615C7982678EFD2002E8A28 /* 簡易仕様書.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "簡易仕様書.pdf"; sourceTree = "<group>"; };
 		D632580E266774E600592F55 /* RestaurantSearcherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantSearcherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6325811266774E600592F55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6325813266774E600592F55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				D6325810266774E600592F55 /* RestaurantSearcherApp */,
-				D615C7942678EA40002E8A28 /* 簡易仕様書.pdf */,
+				D615C7982678EFD2002E8A28 /* 簡易仕様書.pdf */,
 				D632580F266774E600592F55 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -211,7 +211,7 @@
 			files = (
 				D615C790267484E5002E8A28 /* ShopDetailTableViewCell.xib in Resources */,
 				D632581E266774E800592F55 /* LaunchScreen.storyboard in Resources */,
-				D615C7952678EA41002E8A28 /* 簡易仕様書.pdf in Resources */,
+				D615C7992678EFD2002E8A28 /* 簡易仕様書.pdf in Resources */,
 				D615C78C26746A1B002E8A28 /* SearchShopResultTableViewCell.xib in Resources */,
 				D632581B266774E800592F55 /* Assets.xcassets in Resources */,
 				D615C7852674669F002E8A28 /* SearchShopResult.storyboard in Resources */,
