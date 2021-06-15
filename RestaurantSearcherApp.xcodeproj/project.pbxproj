@@ -85,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				D6325810266774E600592F55 /* RestaurantSearcherApp */,
+				D615C7922678E643002E8A28 /* 簡易仕様書.pdf */,
 				D632580F266774E600592F55 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -109,7 +110,6 @@
 				D697A2052668455A0008CEEA /* Storyboard */,
 				D632581A266774E800592F55 /* Assets.xcassets */,
 				D632581C266774E800592F55 /* LaunchScreen.storyboard */,
-				D615C7922678E643002E8A28 /* 簡易仕様書.pdf */,
 				D632581F266774E800592F55 /* Info.plist */,
 			);
 			path = RestaurantSearcherApp;
