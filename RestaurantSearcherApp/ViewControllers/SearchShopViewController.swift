@@ -25,16 +25,16 @@ class SearchShopViewController: UIViewController {
     private var catchStringArray = [String]()
     private var indexNumber = Int()
     
-    private var idoValue = Double()
-    private var keidoValue = Double()
+    private var latValue = Double()
+    private var lngValue = Double()
     
     private var locManager: CLLocationManager!
     private var pointAno: MKPointAnnotation = MKPointAnnotation()
     
-    @IBOutlet weak var searchWordTextField: UITextField!
-    @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var mkMapView: MKMapView!
-    @IBOutlet weak var searchResultButton: UIButton!
+    @IBOutlet weak private var searchWordTextField: UITextField!
+    @IBOutlet weak private var searchButton: UIButton!
+    @IBOutlet weak private var mkMapView: MKMapView!
+    @IBOutlet weak private var searchResultButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +50,7 @@ class SearchShopViewController: UIViewController {
         fetchShopDataInfo()
     }
     
+    // MARK: - Method
     @objc private func tappedSearchResultButton() {
         
         let shopSearchResultViewController = UIStoryboard(name: "SearchShopResult", bundle: nil).instantiateViewController(withIdentifier: "SearchShopResulrViewController") as! SearchShopResulrViewController
@@ -59,12 +60,11 @@ class SearchShopViewController: UIViewController {
         
         
         self.present(shopSearchResultViewController, animated: true, completion: nil)
-        
     }
     
     @objc private func tappedSearchButton() {
         
-        let searchText = searchWordTextField.text ?? ""
+        guard let searchText = searchWordTextField.text else { return }
         
         fetchSearchShopInfo(searchText: searchText)
         searchWordTextField.resignFirstResponder()
@@ -73,8 +73,8 @@ class SearchShopViewController: UIViewController {
     private func fetchShopDataInfo() {
         
         let params = [
-            "lat": "\(idoValue)",
-            "lng": "\(keidoValue)"
+            "lat": "\(latValue)",
+            "lng": "\(lngValue)"
             
         ] as [String : Any]
         
@@ -82,7 +82,6 @@ class SearchShopViewController: UIViewController {
             
             self.shopData = shop.results.shop
             self.shopCount = shop.results.shop.count
-            print("shopCount: ", self.shopCount)
             self.addAnnotation()
         }
     }
@@ -92,8 +91,8 @@ class SearchShopViewController: UIViewController {
         let params = [
             
             "keyword": searchText,
-            "lat": "\(idoValue)",
-            "lng": "\(keidoValue)"
+            "lat": "\(latValue)",
+            "lng": "\(lngValue)"
             
         ] as [String : Any]
         
@@ -101,7 +100,6 @@ class SearchShopViewController: UIViewController {
             
             self.shopData = shop.results.shop
             self.shopCount = shop.results.shop.count
-            print("shopCount: ", self.shopCount)
             self.addAnnotation()
         }
     }
@@ -167,7 +165,6 @@ class SearchShopViewController: UIViewController {
         
         for i in 0...shopCount - 1 {
             
-            print("i: ", i)
             pointAno = MKPointAnnotation()
             pointAno.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(shopData[i].lat) , CLLocationDegrees(shopData[i].lng) )
             
@@ -211,8 +208,14 @@ class SearchShopViewController: UIViewController {
         
         self.view.endEditing(true)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .darkContent
+    }
 }
 
+// MARK: - SearchShopViewController: CLLocationManagerDelegate, MKMapViewDelegate
 extension SearchShopViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:[CLLocation]) {
@@ -222,11 +225,8 @@ extension SearchShopViewController: CLLocationManagerDelegate, MKMapViewDelegate
         let lngFloor = ceil(longitude * 1000)/1000
         let latFloor = floor(latitude * 100)/100
         
-        idoValue = latFloor
-        keidoValue = lngFloor
-        
-        print("lon : ", keidoValue)
-        print("lat : ", idoValue)
+        latValue = latFloor
+        lngValue = lngFloor
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -236,8 +236,6 @@ extension SearchShopViewController: CLLocationManagerDelegate, MKMapViewDelegate
         if nameStringArray.firstIndex(of: (view.annotation?.title)!!) != nil {
             
             indexNumber = nameStringArray.firstIndex(of: (view.annotation?.title)!!)!
-            print("indexNumber: ", indexNumber)
-            
         }
         
         let shopDetailViewController = UIStoryboard(name: "ShopDetail", bundle: nil).instantiateViewController(withIdentifier: "ShopDetailViewController") as! ShopDetailViewController
@@ -245,8 +243,6 @@ extension SearchShopViewController: CLLocationManagerDelegate, MKMapViewDelegate
         shopDetailViewController.modalPresentationStyle = .fullScreen
         shopDetailViewController.shopDetail = self.shopData[indexNumber]
         self.present(shopDetailViewController, animated: true, completion: nil)
-        
-        
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -270,14 +266,5 @@ extension SearchShopViewController: CLLocationManagerDelegate, MKMapViewDelegate
         default:
             print("This should not happen")
         }
-    }
-    // 2点間の距離(m)を算出する
-    func calcDistance(_ a: CLLocationCoordinate2D, _ b: CLLocationCoordinate2D) -> CLLocationDistance {
-        // CLLocationオブジェクトを生成
-        let aLoc: CLLocation = CLLocation(latitude: a.latitude, longitude: a.longitude)
-        let bLoc: CLLocation = CLLocation(latitude: b.latitude, longitude: b.longitude)
-        // CLLocationオブジェクトのdistanceで2点間の距離(m)を算出
-        let dist = bLoc.distance(from: aLoc)
-        return dist
     }
 }

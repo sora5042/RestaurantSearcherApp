@@ -11,7 +11,6 @@ import Nuke
 class ShopDetailTableViewCell: UITableViewCell {
     
     var shopDetail: Shop? {
-        
         didSet {
             
             shopNameLabel.text = shopDetail?.name
@@ -20,26 +19,29 @@ class ShopDetailTableViewCell: UITableViewCell {
             accessLabel.text = shopDetail?.access
             openLabel.text = shopDetail?.open
             parkingLabel.text = shopDetail?.parking
-            
         }
     }
     
-    @IBOutlet weak var shopNameLabel: UILabel!
-    @IBOutlet weak var catchLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var accessLabel: UILabel!
-    @IBOutlet weak var openLabel: UILabel!
-    @IBOutlet weak var parkingLabel: UILabel!
+    @IBOutlet weak private var shopNameLabel: UILabel!
+    @IBOutlet weak private var catchLabel: UILabel!
+    @IBOutlet weak private var addressLabel: UILabel!
+    @IBOutlet weak private var accessLabel: UILabel!
+    @IBOutlet weak private var openLabel: UILabel!
+    @IBOutlet weak private var parkingLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        shopNameLabel.layer.borderWidth = 1
+        catchLabel.layer.borderWidth = 1
+        addressLabel.layer.borderWidth = 1
+        accessLabel.layer.borderWidth = 1
+        openLabel.layer.borderWidth = 1
+        parkingLabel.layer.borderWidth = 1
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-       
-    }
     
+    }
 }

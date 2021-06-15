@@ -23,17 +23,16 @@ class SearchShopResultTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var ShopImageView: UIImageView!
-    @IBOutlet weak var shopNameLabel: UILabel!
-    @IBOutlet weak var accessLabel: UILabel!
-    @IBOutlet weak var openLabel: UILabel!
+    @IBOutlet weak private var ShopImageView: UIImageView!
+    @IBOutlet weak private var shopNameLabel: UILabel!
+    @IBOutlet weak private var accessLabel: UILabel!
+    @IBOutlet weak private var openLabel: UILabel!
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
         ShopImageView.layer.cornerRadius = 30
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

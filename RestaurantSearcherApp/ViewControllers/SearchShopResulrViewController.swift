@@ -12,14 +12,16 @@ class SearchShopResulrViewController: UIViewController {
     private let cellId = "cellId"
     var shopData = [Shop]()
     
-    @IBOutlet weak var searchShopResultTableView: UITableView!
-    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak private var searchShopResultTableView: UITableView!
+    @IBOutlet weak private var backButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
     }
     
+    //MARK: - Method
     private func setupView() {
         
         backButton.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
@@ -32,15 +34,20 @@ class SearchShopResulrViewController: UIViewController {
         
         dismiss(animated: true, completion: nil)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .darkContent
+    }
 }
 
+// MARK: - SearchShopResulrViewController: UITableViewDelegate, UITableViewDataSource
 extension SearchShopResulrViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 200
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -53,13 +60,17 @@ extension SearchShopResulrViewController: UITableViewDelegate, UITableViewDataSo
         
         cell.shopDetail = shopData[indexPath.row]
         
+        let selectionView = UIView()
+        
+        selectionView.backgroundColor = UIColor.systemOrange
+        cell.selectedBackgroundView = selectionView
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let shopDetailViewController = UIStoryboard(name: "ShopDetail", bundle: nil).instantiateViewController(withIdentifier: "ShopDetailViewController") as! ShopDetailViewController
-        
         shopDetailViewController.modalPresentationStyle = .fullScreen
         shopDetailViewController.shopDetail = self.shopData[indexPath.row]
         self.present(shopDetailViewController, animated: true, completion: nil)
