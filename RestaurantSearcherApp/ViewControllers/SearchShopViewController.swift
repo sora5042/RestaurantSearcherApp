@@ -53,7 +53,7 @@ class SearchShopViewController: UIViewController {
     // MARK: - Method
     @objc private func tappedSearchResultButton() {
         
-        let shopSearchResultViewController = UIStoryboard(name: "SearchShopResult", bundle: nil).instantiateViewController(withIdentifier: "SearchShopResulrViewController") as! SearchShopResulrViewController
+        let shopSearchResultViewController = UIStoryboard(name: "SearchShopResult", bundle: nil).instantiateViewController(withIdentifier: "SearchShopResultViewController") as! SearchShopResultViewController
         
         shopSearchResultViewController.modalPresentationStyle = .fullScreen
         shopSearchResultViewController.shopData = shopData

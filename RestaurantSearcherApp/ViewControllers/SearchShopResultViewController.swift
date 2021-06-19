@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchShopResulrViewController: UIViewController {
+class SearchShopResultViewController: UIViewController {
     
     private let cellId = "cellId"
     var shopData = [Shop]()
@@ -42,7 +42,7 @@ class SearchShopResulrViewController: UIViewController {
 }
 
 // MARK: - SearchShopResulrViewController: UITableViewDelegate, UITableViewDataSource
-extension SearchShopResulrViewController: UITableViewDelegate, UITableViewDataSource {
+extension SearchShopResultViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         

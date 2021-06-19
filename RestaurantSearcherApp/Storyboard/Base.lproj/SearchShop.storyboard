@@ -24,7 +24,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="9XE-dS-yTQ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="rnu-F5-vL5"/>
                                 </constraints>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -56,6 +56,7 @@
                             <constraint firstItem="DKT-3V-HGC" firstAttribute="top" secondItem="P1f-O9-EKj" secondAttribute="bottom" constant="5" id="QVT-SY-xwX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CqW-1W-huM" secondAttribute="trailing" constant="65" id="SmM-z0-1pW"/>
                             <constraint firstAttribute="bottom" secondItem="DKT-3V-HGC" secondAttribute="bottom" id="aAs-FN-Gke"/>
+                            <constraint firstItem="CqW-1W-huM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s3w-eZ-CXB" secondAttribute="trailing" constant="8" symbolic="YES" id="i5C-cl-LpA"/>
                             <constraint firstItem="s3w-eZ-CXB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="j4N-e3-Zk0"/>
                             <constraint firstItem="P1f-O9-EKj" firstAttribute="leading" secondItem="CqW-1W-huM" secondAttribute="trailing" constant="4" id="yA1-dt-gGw"/>
                         </constraints>
